@@ -1,6 +1,5 @@
 import numpy as np
 import random
-from sklearn.utils import shuffle
 
 
 class Matriz():
@@ -23,7 +22,7 @@ class Matriz():
 
     def matriz_np(self, cant_col, cant_fil):
 
-        matriz = np.zeros((cant_col, cant_fil))
+        matriz = np.zeros((cant_col, cant_fil), int)
         a = 0
 
         for i in range(cant_fil):
@@ -37,27 +36,38 @@ class Matriz():
 
     def matriz_random(self, cant_col, cant_fil, num_mezcladas):
 
-        matriz = Matriz().armar_matriz(cant_col, cant_fil)
+        matriz = []
+        cant_pos = [i for i in range(cant_col*cant_fil)]
 
         for i in range(num_mezcladas):
-            random.shuffle(matriz)
+            random.shuffle(cant_pos)
 
-            for fila in matriz:
-                random.shuffle(fila)
+        a = 0
 
+        for i in range(cant_fil):
+            matriz.append([])
+            for j in range(cant_col):
+                matriz[i].append(cant_pos[a])
+                a += 1
+            
         # print(matriz)
+        
         return matriz
 
     def random_np(self, cant_col, cant_fil, num_mezcladas):
 
-        matriz = Matriz().matriz_np(cant_col, cant_fil)
+        matriz = np.zeros((cant_col, cant_fil), int)
+        a = 0
+
+        cant_pos = [i for i in range(cant_col*cant_fil)]
 
         for i in range(num_mezcladas):
+            random.shuffle(cant_pos)
 
-            matriz = shuffle(matriz)
-
-            for fila in matriz:
-                random.shuffle(fila)
+        for i in range(cant_fil):
+            for j in range(cant_col):
+                matriz[i][j] = cant_pos[a]
+                a += 1
 
         # print(matriz)
         return matriz
