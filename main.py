@@ -13,7 +13,7 @@ def main():
     matriz_r = Matriz().matriz_random(cant_col, cant_fil, num_mezcladas)
     # Matriz().random_np(cant_col, cant_fil, num_mezcladas)
 
-    B_random().busqueda_random(matriz_r, matriz_o)
+    B_random().movimientos_posibles(matriz_r)
 
 
 
