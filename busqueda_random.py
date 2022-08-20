@@ -18,4 +18,4 @@ class B_random():
 
     def movimientos_posibles(self, matriz_r):
 
-        pass
+        pos_fila0, pos_cero = B_random().posicion_cero(matriz_r)
