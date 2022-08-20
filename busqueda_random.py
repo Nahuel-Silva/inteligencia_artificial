@@ -1,4 +1,7 @@
 
+import random
+
+
 class B_random():
 
     def posicion_cero(self, matriz_r):
@@ -15,12 +18,4 @@ class B_random():
 
     def movimientos_posibles(self, matriz_r):
 
-        pos_fila0, pos_cero = B_random().posicion_cero(matriz_r)
-
-        if pos_fila0 == 0:
-            if pos_cero == 0:
-                pass
-
-        # print(pos_cero)
-        # print(pos_fila0)
-        print(matriz_r)
+        pass

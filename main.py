@@ -3,8 +3,8 @@ from busqueda_random import *
 
 def main():
 
-    cant_col = int(input("Cantidad de columnas? "))
-    cant_fil = int(input("Cantidad de filas? "))
+    cant_col = 3
+    cant_fil = 3
     num_mezcladas = int(input("Cuantas veces quiere mezclar las fichas? "))
 
     matriz_o = Matriz().armar_matriz(cant_col, cant_fil)
