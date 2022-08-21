@@ -13,8 +13,15 @@ def main():
     matriz_r = Matriz().matriz_random(cant_col, cant_fil, num_mezcladas)
     # Matriz().random_np(cant_col, cant_fil, num_mezcladas)
 
-    B_random().movimientos_posibles(matriz_r)
+    print(f"Matriz deseada:" )
+    for fila in matriz_o:
+        print(fila)
 
+    print(f"\nMatriz random:" )
+    for fila in matriz_r:
+        print(fila)
+
+    B_random().definitiva(matriz_r, matriz_o)
 
 
 if __name__ == '__main__':
