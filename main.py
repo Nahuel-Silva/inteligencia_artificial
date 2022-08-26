@@ -1,6 +1,7 @@
 from matriz import *
 from busqueda_random import *
 from mezclar import *
+from busqueda_anchura import *
 
 def main():
 
@@ -24,7 +25,11 @@ def main():
 
     matriz_r = Mezclar().mezclar_random(matriz_o, num_mezcladas)
 
-    B_random().definitiva(matriz_r, matriz_o2)
+    #Busqueda random
+    # B_random().definitiva(matriz_r, matriz_o2)
+
+    #Busqueda en anchura
+    B_anchura().movimientos_posibles(matriz_r)
 
 if __name__ == '__main__':
     main()
