@@ -35,41 +35,38 @@ class B_anchura():
             posicion = (pos_fila0, (pos_cero-1))
             posiciones_dis.append(posicion)
 
-        contador = 0
-        contador += 1
         niveles = []
+        matriz_cp = copy.deepcopy(matriz)
 
         for pos in posiciones_dis:
-            matriz[pos_fila0][pos_cero], matriz[pos[0]][pos[1]] = matriz[pos[0]][pos[1]], matriz[pos_fila0][pos_cero]
-        #     niveles.append(matriz)
-        # print(niveles)
-
-        # arbol = {contador:niveles}
-        # print(arbol)
+            matriz_cp[pos_fila0][pos_cero], matriz_cp[pos[0]][pos[1]] = matriz_cp[pos[0]][pos[1]], matriz_cp[pos_fila0][pos_cero]
+            niveles.append(matriz_cp)
+            matriz_cp = copy.deepcopy(matriz)
         
-        # return arbol
+        return niveles
     
-    # def definitiva(self, matriz_r, matriz_o):
+    def definitiva(self, matriz_r, matriz_o):
 
-    #     arbol = B_anchura().movimientos_posibles(matriz_r)
+        niveles = B_anchura().movimientos_posibles(matriz_r)
 
-    #     print(arbol)
+        contador = 0
+        lista_comun = []
 
-        # for matriz in arbol.values:
-        #     arbol = B_anchura().movimientos_posibles(matriz)
-        
-        # print(arbol)
+        for j in niveles:
+            lista_comun.append(j)
 
-        # contador = 0
-
-        # while True:
-        #     matriz_armada = B_anchura().movimientos_posibles(matriz_r)
-        #     contador += 1
-
-            # if matriz_armada == matriz_o:
-            #     print(f"\nMatriz resultante: ")
-            #     for fila in matriz_armada:
-            #         print(fila)
-            #     print(f"Numero de movimientos necesarios {contador}")
-            #     break
+        for i in range(2):
+            for matriz in niveles:
+                niveles = B_anchura().movimientos_posibles(matriz)
+                for i in niveles:
+                    niveles = B_anchura().movimientos_posibles(i)
+                    if i not in lista_comun:
+                        lista_comun.append(i)
+                
+        #         if matriz == matriz_o:
+        #             print(f"\nMatriz resultante: ")
+        #             for fila in matriz:
+        #                 print(fila)
+        #             print(f"Numero de niveles que se hicieron{contador}")
+        #             break
             

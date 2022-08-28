@@ -29,7 +29,7 @@ def main():
     # B_random().definitiva(matriz_r, matriz_o2)
 
     #Busqueda en anchura
-    B_anchura().movimientos_posibles(matriz_r)
+    B_anchura().definitiva(matriz_r, matriz_o2)
 
 if __name__ == '__main__':
     main()
