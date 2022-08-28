@@ -1,3 +1,4 @@
+from ast import While
 import copy
 
 class B_anchura():
@@ -46,27 +47,29 @@ class B_anchura():
         return niveles
     
     def definitiva(self, matriz_r, matriz_o):
-
-        niveles = B_anchura().movimientos_posibles(matriz_r)
-
-        contador = 0
         lista_comun = []
 
-        for j in niveles:
-            lista_comun.append(j)
+        niveles = self.movimientos_posibles(matriz_r)
 
-        for i in range(2):
+        contador = 1
+
+        arbol = {contador:niveles}
+
+        for i in niveles:
+            lista_comun.append(i)
+
+        while matriz_o not in lista_comun:
             for matriz in niveles:
-                niveles = B_anchura().movimientos_posibles(matriz)
+                contador += 1
+                niveles = self.movimientos_posibles(matriz)
+                arbol[contador] = niveles
                 for i in niveles:
-                    niveles = B_anchura().movimientos_posibles(i)
                     if i not in lista_comun:
                         lista_comun.append(i)
+                        print(lista_comun)
+            if matriz_o in lista_comun:
+                break
+
+    
+        print(arbol)
                 
-        #         if matriz == matriz_o:
-        #             print(f"\nMatriz resultante: ")
-        #             for fila in matriz:
-        #                 print(fila)
-        #             print(f"Numero de niveles que se hicieron{contador}")
-        #             break
-            
