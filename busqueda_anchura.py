@@ -47,9 +47,11 @@ class B_anchura():
         return niveles
     
     def definitiva(self, matriz_r, matriz_o):
+        matriz_r2 = [[0, 2, 6],[1, 3, 4],[7, 5, 8]]
+
         lista_comun = []
 
-        niveles = self.movimientos_posibles(matriz_r)
+        niveles = self.movimientos_posibles(matriz_r2)
 
         contador = 1
 
@@ -58,7 +60,8 @@ class B_anchura():
         for i in niveles:
             lista_comun.append(i)
 
-        while matriz_o not in lista_comun:
+        # while matriz_o not in lista_comun:
+        for i in range(10):
             for matriz in niveles:
                 contador += 1
                 niveles = self.movimientos_posibles(matriz)
@@ -66,10 +69,12 @@ class B_anchura():
                 for i in niveles:
                     if i not in lista_comun:
                         lista_comun.append(i)
-                        print(lista_comun)
-            if matriz_o in lista_comun:
-                break
+        print(lista_comun)
+            # if matriz_o in lista_comun:
+            #     print(lista_comun)
+            #     exit(0)
+                # break
 
     
-        print(arbol)
+        # print(arbol)
                 
