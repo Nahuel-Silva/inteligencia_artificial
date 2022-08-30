@@ -52,7 +52,7 @@ class B_random():
             matriz_armada = B_random().movimientos_posibles(matriz_r)
             contador += 1
             if matriz_armada == matriz_o:
-                print(f"\nMatriz resultante: ")
+                print(f"\nMatriz objetivo: ")
                 for fila in matriz_armada:
                     print(fila)
                 print(f"Numero de movimientos necesarios {contador}")

@@ -70,6 +70,9 @@ class B_anchura():
                     if matriz_o in lista_comun:
                         break
         keys = [i for i in arbol.keys()]
-
+        
+        print(f"\nMatriz objetivo: ")
+        for fila in matriz_o:
+            print(fila)
         print(f"Cantidad de movimientos {keys[-1]}")
                 
