@@ -1,4 +1,3 @@
-from ast import While
 import copy
 
 class B_anchura():
@@ -48,31 +47,43 @@ class B_anchura():
     
     def definitiva(self, matriz_r, matriz_o):
 
-        lista_comun = []
+        lista_comunes = []
+        arbol = [[]]
+        arbol[0].append(matriz_r)
+        lista_comunes.append(matriz_r)
+        a = True
+        while a == True:
 
-        niveles = self.movimientos_posibles(matriz_r)
+            arbol_cp = copy.deepcopy(arbol)
 
-        contador = 1
+            for matriz_nodo in arbol_cp:
+                arbol.remove(matriz_nodo)
+                m_nodo_cp = copy.deepcopy(matriz_nodo[-1])
+                niveles = self.movimientos_posibles(m_nodo_cp)
 
-        arbol = {contador:niveles}
+                for i in niveles:
+                    if i not in lista_comunes:
+                        lista_comunes.append(i)
+                        nodo_s = copy.deepcopy(matriz_nodo)
+                        nodo_s.append(i)
+                        arbol.append(nodo_s)
+                # b = False
+                # for nodo_t in arbol_cp:
+                #     if nuevo_nodo in nodo_t:
+                #         b = True
+                #         break
+                # if not b:
+                #     nodo_s = copy.deepcopy(matriz_nodo)
+                #     nodo_s.append(i)
+                #     arbol.append(nodo_s)
 
-        for i in niveles:
-            lista_comun.append(i)
+                    if matriz_o in lista_comunes:
+                            a = False
+                if matriz_o in lista_comunes:
+                    a = False
+            if matriz_o in lista_comunes:
+                a = False
 
-        # while matriz_o not in lista_comun:
-        for matriz in lista_comun:
-            contador += 1
-            niveles = self.movimientos_posibles(matriz)
-            arbol[contador] = niveles
-            for i in niveles:
-                if i not in lista_comun:
-                    lista_comun.append(i)
-                    if matriz_o in lista_comun:
-                        break
-        keys = [i for i in arbol.keys()]
-        
-        print(f"\nMatriz objetivo: ")
-        for fila in matriz_o:
-            print(fila)
-        print(f"Cantidad de movimientos {keys[-1]}")
-                
+        for i in arbol:
+            if matriz_o in i:
+                print(i)
