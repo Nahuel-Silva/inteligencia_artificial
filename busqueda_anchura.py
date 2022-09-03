@@ -67,16 +67,7 @@ class B_anchura():
                         nodo_s = copy.deepcopy(matriz_nodo)
                         nodo_s.append(i)
                         arbol.append(nodo_s)
-                # b = False
-                # for nodo_t in arbol_cp:
-                #     if nuevo_nodo in nodo_t:
-                #         b = True
-                #         break
-                # if not b:
-                #     nodo_s = copy.deepcopy(matriz_nodo)
-                #     nodo_s.append(i)
-                #     arbol.append(nodo_s)
-
+                        
                     if matriz_o in lista_comunes:
                             a = False
                 if matriz_o in lista_comunes:
