@@ -2,6 +2,7 @@ from matriz import *
 from busqueda_random import *
 from mezclar import *
 from busqueda_anchura import *
+from busqueda_bidireccional import *
 
 def main():
 
@@ -29,7 +30,10 @@ def main():
     # B_random().definitiva(matriz_r, matriz_o2)
 
     #Busqueda en anchura
-    B_anchura().definitiva(matriz_r, matriz_o2)
+    # B_anchura().definitiva(matriz_r, matriz_o2)
+
+    #Busqueda bidireccional
+
 
 if __name__ == '__main__':
     main()
