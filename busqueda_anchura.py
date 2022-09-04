@@ -77,4 +77,10 @@ class B_anchura():
 
         for i in arbol:
             if matriz_o in i:
-                print(i)
+                camino = copy.deepcopy(i)
+
+        nivel = 0
+        for i in camino:
+            print(f"Nivel {nivel}")
+            print(i)
+            nivel += 1
