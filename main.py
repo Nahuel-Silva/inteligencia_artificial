@@ -26,6 +26,10 @@ def main():
 
     matriz_r = Mezclar().mezclar_random(matriz_o, num_mezcladas)
 
+    print("\nMatriz objetivo: ")
+    for fila in matriz_o2:
+        print(fila)
+
     #Busqueda random
     # B_random().definitiva(matriz_r, matriz_o2)
 
@@ -33,6 +37,7 @@ def main():
     # B_anchura().definitiva(matriz_r, matriz_o2)
 
     #Busqueda bidireccional
+    B_bidireccional().definitiva(matriz_r, matriz_o2)
 
 
 if __name__ == '__main__':
