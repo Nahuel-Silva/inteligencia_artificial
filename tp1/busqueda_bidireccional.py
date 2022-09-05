@@ -124,3 +124,5 @@ class B_bidireccional():
             for fila2 in m:
                 print(fila2)
             c+=1
+        
+        print(f"\nNumero de movimientos necesarios {(len(arbol2)-1) + (len(arbol_bi2)-1)}")
