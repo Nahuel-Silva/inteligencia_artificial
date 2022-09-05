@@ -49,6 +49,7 @@ class B_anchura():
 
         lista_comunes = []
         arbol = [[]]
+        arbol2 = copy.deepcopy(arbol)
         arbol[0].append(matriz_r)
         lista_comunes.append(matriz_r)
         a = True
@@ -67,6 +68,7 @@ class B_anchura():
                         nodo_s = copy.deepcopy(matriz_nodo)
                         nodo_s.append(i)
                         arbol.append(nodo_s)
+                        arbol2.append(nodo_s)
                         
                     if matriz_o in lista_comunes:
                             a = False
@@ -81,6 +83,12 @@ class B_anchura():
 
         nivel = 0
         for i in camino:
-            print(f"Nivel {nivel}")
-            print(i)
+            print(f"\nNivel {nivel}")
+            for fila in i:
+                print(fila)
             nivel += 1
+        
+        print(f"\nNumero de movimientos necesarios {len(arbol2)}")
+
+        
+        
