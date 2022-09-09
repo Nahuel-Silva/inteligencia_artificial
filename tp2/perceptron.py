@@ -8,6 +8,8 @@ class Perceptron():
 
         tabla_and = [[0,0,0],[0,1,0],[1,0,0],[1,1,1]]
 
+        tabla_xor = [[0, 0, 0],[0, 1, 1],[1, 0, 1],[1, 1, 0]]
+
         w0 = 0.9
         w1 = 0.66
         w2 = -0.2
@@ -18,14 +20,17 @@ class Perceptron():
 
         if res == "or":
             tabla = tabla_or
-        else:
+        elif res == "and":
             tabla = tabla_and
+        else:
+            tabla = tabla_xor
 
         contador = 0
 
         print(f"W0: {w0}")
         print(f"W1: {w1}")
         print(f"W2: {w2}")
+
         a = True
         while math.fabs(error) > 0.1:
         # while a == True:
