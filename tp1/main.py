@@ -37,7 +37,7 @@ def main():
     # B_anchura().definitiva(matriz_r, matriz_o2)
 
     #Busqueda bidireccional
-    B_bidireccional().definitiva(matriz_r, matriz_o2)
+    # B_bidireccional().definitiva(matriz_r, matriz_o2)
 
 
 if __name__ == '__main__':
