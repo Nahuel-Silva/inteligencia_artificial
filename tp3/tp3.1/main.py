@@ -1,4 +1,4 @@
-from re import S
+import matplotlib.pyplot as plt
 from neurona1 import *
 from neurona2 import *
 from neurona3 import *
@@ -8,6 +8,7 @@ def main():
     
     tabla_xor = [[0, 0, 0],[0, 1, 1],[1, 0, 1],[1, 1, 0]]
     c = 0
+    a = 0
 
     w0 = 0.9
     w1 = 0.7
@@ -22,11 +23,28 @@ def main():
     w10 = -0.79
     w11 = 0.56
     w12 = 0.6
+    lista_w0 = []
+    lista_w1 = []
+    lista_w2 = []
+    lista_w3 = []
+    lista_w4 = []
+    lista_w5 = []
+    lista_w6 = []
+    lista_w7 = []
+    lista_w8 = []
+    lista_w9 = []
+    lista_w10 = []
+    lista_w11 = []
+    lista_w12 = []
+    lista_errores = []
+    lista_contador = []
 
-    while c != 1000:
+    while c != 10000:
         c+=1
         print(f"--------------------------->Iteracion {c}<------------------------------------")
         for i in tabla_xor:
+            a+=1
+            lista_contador.append(a)
             y_n1, w0, w1, w2 = Neurona1().enseñar_neurona1(i, w0, w1, w2)
             y_n2, w3, w4, w5 = Neurona2().enseñar_neurona2(i, w3, w4, w5)
             y_n3, w6, w7, w8 = Neurona3().enseñar_neurona3(i, w6, w7, w8)
@@ -48,6 +66,10 @@ def main():
             w1 = w1c1
             w2 = w2c1
 
+            lista_w0.append(w0)
+            lista_w1.append(w1)
+            lista_w2.append(w2)
+
             Soc2 = y_n2*(1-y_n2)*s
 
             delta_w3c2 = lr*vias*Soc2
@@ -60,6 +82,10 @@ def main():
             w3 = w3c2
             w4 = w4c2
             w5 = w5c2
+
+            lista_w3.append(w3)
+            lista_w4.append(w4)
+            lista_w5.append(w5)
 
             Soc3 = y_n3*(1-y_n3)*s
 
@@ -74,13 +100,37 @@ def main():
             w7 = w7c3
             w8 = w8c3
 
+            lista_w6.append(w6)
+            lista_w7.append(w7)
+            lista_w8.append(w8)
+
             w9 = w9
             w10 = w10
             w11 = w11
             w12 = w12
 
-        if c == 1000:
-            break
+            lista_w9.append(w9)
+            lista_w10.append(w10)
+            lista_w11.append(w11)
+            lista_w12.append(w12)
+
+    plt.plot(lista_contador, lista_w0, label="w0")
+    plt.plot(lista_contador, lista_w1, label="w1")
+    plt.plot(lista_contador, lista_w2, label="w2")
+    plt.plot(lista_contador, lista_w3, label="w3")
+    plt.plot(lista_contador, lista_w4, label="w4")
+    plt.plot(lista_contador, lista_w5, label="w5")
+    plt.plot(lista_contador, lista_w6, label="w6")
+    plt.plot(lista_contador, lista_w7, label="w7")
+    plt.plot(lista_contador, lista_w8, label="w8")
+    plt.plot(lista_contador, lista_w9, label="w9")
+    plt.plot(lista_contador, lista_w10, label="w10")
+    plt.plot(lista_contador, lista_w11, label="w11")
+    plt.plot(lista_contador, lista_w12, label="w12")
+    plt.title("pesos")
+    plt.legend()
+    plt.show()
+    plt.savefig('grafica_pesos.png')
 
 
 if __name__ == '__main__':
