@@ -33,5 +33,5 @@ class Neurona4():
         print("\nNeurona 4:\n")
         print(f"\nSalida real: {s_real_y}\n")
 
-        return s, w9, w10, w11, w12
+        return s, w9, w10, w11, w12, error
         

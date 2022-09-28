@@ -48,7 +48,9 @@ def main():
             y_n1, w0, w1, w2 = Neurona1().enseñar_neurona1(i, w0, w1, w2)
             y_n2, w3, w4, w5 = Neurona2().enseñar_neurona2(i, w3, w4, w5)
             y_n3, w6, w7, w8 = Neurona3().enseñar_neurona3(i, w6, w7, w8)
-            s, w9, w10, w11, w12 = Neurona4().enseñar_neurona4(y_n1, y_n2, y_n3, i, w9, w10, w11, w12)
+            s, w9, w10, w11, w12, error = Neurona4().enseñar_neurona4(y_n1, y_n2, y_n3, i, w9, w10, w11, w12)
+
+            lista_errores.append(error)
 
             vias = 1
             lr = 0.5
@@ -131,6 +133,12 @@ def main():
     plt.legend()
     plt.show()
     plt.savefig('grafica_pesos.png')
+
+    plt.plot(lista_contador, lista_errores, label="errores")
+    plt.title("errores")
+    plt.legend()
+    plt.show()
+    plt.savefig('grafica_errores.png')
 
 
 if __name__ == '__main__':
