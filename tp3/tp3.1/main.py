@@ -36,11 +36,16 @@ def main():
     lista_w10 = []
     lista_w11 = []
     lista_w12 = []
-    lista_errores = []
+    lista_errores0 = []
+    lista_errores1 = []
+    lista_errores2 = []
+    lista_errores3 = []
     lista_contador = []
+    lista_contador1 = []
 
     while c != 10000:
         c+=1
+        lista_contador1.append(c)
         print(f"--------------------------->Iteracion {c}<------------------------------------")
         for i in tabla_xor:
             a+=1
@@ -49,8 +54,15 @@ def main():
             y_n2, w3, w4, w5 = Neurona2().enseñar_neurona2(i, w3, w4, w5)
             y_n3, w6, w7, w8 = Neurona3().enseñar_neurona3(i, w6, w7, w8)
             s, w9, w10, w11, w12, error = Neurona4().enseñar_neurona4(y_n1, y_n2, y_n3, i, w9, w10, w11, w12)
-
-            lista_errores.append(error)
+            
+            if i == [0,0,0]:
+                lista_errores0.append(error)
+            elif i == [0,1,1]:
+                lista_errores1.append(error)
+            elif i == [1,0,1]:
+                lista_errores2.append(error)
+            elif i == [1,1,0]:
+                lista_errores3.append(error)    
 
             vias = 1
             lr = 0.5
@@ -132,13 +144,16 @@ def main():
     plt.title("pesos")
     plt.legend()
     plt.show()
-    plt.savefig('grafica_pesos.png')
+    # plt.savefig('grafica_pesos.png')
 
-    plt.plot(lista_contador, lista_errores, label="errores")
+    plt.plot(lista_contador1, lista_errores0, label="errores0")
+    plt.plot(lista_contador1, lista_errores1, label="errores1")
+    plt.plot(lista_contador1, lista_errores2, label="errores2")
+    plt.plot(lista_contador1, lista_errores3, label="errores3")
     plt.title("errores")
     plt.legend()
     plt.show()
-    plt.savefig('grafica_errores.png')
+    # plt.savefig('grafica_errores.png')
 
 
 if __name__ == '__main__':
