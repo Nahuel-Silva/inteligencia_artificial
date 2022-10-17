@@ -16,9 +16,12 @@ def main():
         p = float(input(f"Ingrese el peso {i}: "))
         pesos_cpo.append(p)
 
+    pesos_ult_neu = []
+
     for i in range(n):
         a += 1
         p = float(input(f"Ingrese el peso {a}: "))
+        pesos_ult_neu.append(p)
 
     lista_div = []
     for i in range(0, len(pesos_cpo), 3):
@@ -34,8 +37,9 @@ def main():
             for j in lista_div:
                 s_real_y = Capa_oculta().neurona_generica(i, j)
                 lista_y.append(s_real_y)
+            lista_y.clear()
 
-    
+    print(lista_y)
 
         
 

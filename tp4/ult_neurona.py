@@ -2,7 +2,7 @@ import math
 
 class Neurona4():
 
-    def enseñar_neurona4(self, y_n1, y_n2, y_n3, fila, w9, w10, w11, w12):
+    def enseñar_neurona4(self, lista_y , fila, lista_pesos):
 
         w9 = w9
         w10 = w10
