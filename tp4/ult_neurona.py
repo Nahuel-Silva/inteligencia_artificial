@@ -1,36 +1,38 @@
 import math
 
-class Neurona4():
+class Ultima_neurona():
 
-    def enseñar_neurona4(self, lista_y , fila, lista_pesos):
-
-        w9 = w9
-        w10 = w10
-        w11 = w11
-        w12 = w12
+    def enseñar_ultNeurona(self, lista_y , fila, lista_pesos):
 
         vias = 1
-        e1 = y_n1
-        e2 = y_n2
-        e3 = y_n3
-        s_deseada = fila[2]
-        x = (w9*vias)+(w10*e1)+(w11*e2)+(w12*e3)
+        salida_deseada = fila[2]
+
+        lista_cortada = lista_pesos[1:]
+        x_1 = 0
+
+        for i in range(len(lista_cortada)):
+            x_1 += (lista_cortada[i]*lista_y[i])
+
+        x = x_1 + (lista_pesos[0]*vias)
         numerador = 1
         denominador = 1 + (math.e**(-x))
         s_real_y = numerador / denominador
-        error = s_deseada - s_real_y
+        error = salida_deseada - s_real_y
         s = s_real_y*(1-s_real_y)*error
-        lr = 0.5
+        lr = 0.1
         delta_w9 = lr*vias*s
-        w9 = w9 + delta_w9
-        delta_w10 = lr*e1*s
-        w10 = w10 + delta_w10
-        delta_w11 = lr*e2*s
-        w11 = w11 + delta_w11
-        delta_w12 = lr*e3*s
-        w12 = w12 + delta_w12
+        w9 = lista_pesos[0] + delta_w9
+
+        nuevas_w = []
+
+        nuevas_w.append(w9)
+
+        for i in range(len(lista_y)):
+            delta_gen = lr*lista_y[i]*s
+            w_gen = lista_cortada[i] + delta_gen
+            nuevas_w.append(w_gen)
 
         print("\nNeurona 4:\n")
         print(f"\nSalida real: {s_real_y}\n")
 
-        return s, w9, w10, w11, w12, error
+        return s, nuevas_w, error

@@ -1,4 +1,5 @@
 from capa_oculta import Capa_oculta
+from ult_neurona import *
 
 def main():
     c = 0
@@ -18,10 +19,10 @@ def main():
 
     pesos_ult_neu = []
 
-    for i in range(n):
-        a += 1
+    for i in range(n+1):
         p = float(input(f"Ingrese el peso {a}: "))
         pesos_ult_neu.append(p)
+        a += 1
 
     lista_div = []
     for i in range(0, len(pesos_cpo), 3):
@@ -37,9 +38,32 @@ def main():
             for j in lista_div:
                 s_real_y = Capa_oculta().neurona_generica(i, j)
                 lista_y.append(s_real_y)
-            lista_y.clear()
 
-    print(lista_y)
+            s, nuevas_w, error = Ultima_neurona().enseñar_ultNeurona(lista_y, i, pesos_ult_neu)
+            pesos_ult_neu = nuevas_w
+
+            vias = 1
+            lr = 0.1
+
+            lista_comun = []
+            
+            for l in range(len(lista_div)):
+                Soc_gen = lista_y[l]*(1-lista_y[l])*s
+                delta_gen = lr*vias*Soc_gen
+                for r in range(len(lista_div)):
+                    w_gen = lista_div[l][r] + delta_gen
+                    lista_comun.append(w_gen)
+
+            lista_y.clear()
+            lista_div.clear()
+
+            for f in range(0, len(lista_comun), 3):
+                lista_div.append(lista_comun[f:f+3])
+
+                
+
+
+
 
         
 
