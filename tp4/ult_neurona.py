@@ -19,7 +19,8 @@ class Ultima_neurona():
         s_real_y = numerador / denominador
         error = salida_deseada - s_real_y
         s = s_real_y*(1-s_real_y)*error
-        lr = 0.1
+        lr = 0.5
+
         delta_w9 = lr*vias*s
         w9 = lista_pesos[0] + delta_w9
 

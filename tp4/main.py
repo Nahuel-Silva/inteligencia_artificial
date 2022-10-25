@@ -1,5 +1,6 @@
 from capa_oculta import Capa_oculta
 from ult_neurona import *
+import copy
 
 def main():
     c = 0
@@ -40,12 +41,15 @@ def main():
                 lista_y.append(s_real_y)
 
             s, nuevas_w, error = Ultima_neurona().enseñar_ultNeurona(lista_y, i, pesos_ult_neu)
+            pesos_ult_neu.clear()
             pesos_ult_neu = nuevas_w
 
             vias = 1
-            lr = 0.1
+            lr = 0.5
 
             lista_comun = []
+
+            print(lista_y)
             
             for l in range(len(lista_div)):
                 Soc_gen = lista_y[l]*(1-lista_y[l])*s
@@ -53,6 +57,8 @@ def main():
                 for r in range(len(lista_div)):
                     w_gen = lista_div[l][r] + delta_gen
                     lista_comun.append(w_gen)
+
+            # print(lista_comun)
 
             lista_y.clear()
             lista_div.clear()
