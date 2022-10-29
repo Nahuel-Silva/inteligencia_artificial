@@ -8,12 +8,14 @@ class Ultima_neurona():
         salida_deseada = fila[2]
 
         lista_cortada = lista_pesos[1:]
-        x_1 = 0
+
+        x = (lista_pesos[0]*vias)
 
         for i in range(len(lista_cortada)):
-            x_1 += (lista_cortada[i]*lista_y[i])
+            x += (lista_cortada[i]*lista_y[i])
 
-        x = x_1 + (lista_pesos[0]*vias)
+        print(f"x -- {x}")
+        
         numerador = 1
         denominador = 1 + (math.e**(-x))
         s_real_y = numerador / denominador
