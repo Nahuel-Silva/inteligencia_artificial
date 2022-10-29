@@ -1,7 +1,15 @@
 from capa_oculta import Capa_oculta
 from ult_neurona import *
+import matplotlib.pyplot as plt
 
 def main():
+
+    lista_errores0 = []
+    lista_errores1 = []
+    lista_errores2 = []
+    lista_errores3 = []
+    lista_contador = []
+
     c = 0
 
     tabla_xor = [[0, 0, 0],[0, 1, 1],[1, 0, 1],[1, 1, 0]]
@@ -32,6 +40,7 @@ def main():
     
     while c != 10000:
         c += 1
+        lista_contador.append(c)
 
         print(f"--------------------------->Iteracion {c}<------------------------------------")
         for i in tabla_xor:
@@ -42,6 +51,15 @@ def main():
             s, nuevas_w, error = Ultima_neurona().enseñar_ultNeurona(lista_y, i, pesos_ult_neu)
             pesos_ult_neu.clear()
             pesos_ult_neu = nuevas_w
+
+            if i == [0,0,0]:
+                lista_errores0.append(error)
+            elif i == [0,1,1]:
+                lista_errores1.append(error)
+            elif i == [1,0,1]:
+                lista_errores2.append(error)
+            elif i == [1,1,0]:
+                lista_errores3.append(error)   
 
             vias = 1
             lr = 0.5
@@ -66,6 +84,14 @@ def main():
 
             for f in range(0, len(lista_comun), 3):
                 lista_div.append(lista_comun[f:f+3])
+
+    plt.plot(lista_contador, lista_errores0, label="errores0")
+    plt.plot(lista_contador, lista_errores1, label="errores1")
+    plt.plot(lista_contador, lista_errores2, label="errores2")
+    plt.plot(lista_contador, lista_errores3, label="errores3")
+    plt.title("errores")
+    plt.legend()
+    plt.show()
             
 
                 
