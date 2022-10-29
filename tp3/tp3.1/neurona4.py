@@ -16,8 +16,6 @@ class Neurona4():
         s_deseada = fila[2]
         x = (w9*vias)+(w10*e1)+(w11*e2)+(w12*e3)
 
-        print(f"x -- {x}")
-
         numerador = 1
         denominador = 1 + (math.e**(-x))
         s_real_y = numerador / denominador

@@ -43,7 +43,7 @@ def main():
     lista_contador = []
     lista_contador1 = []
 
-    while c != 1:
+    while c != 10000:
         c+=1
         lista_contador1.append(c)
         print(f"--------------------------->Iteracion {c}<------------------------------------")
@@ -80,8 +80,6 @@ def main():
             w1 = w1c1
             w2 = w2c1
 
-            # print(f"###{w0}###{w1}###{w2}")
-
             lista_w0.append(w0)
             lista_w1.append(w1)
             lista_w2.append(w2)
@@ -99,8 +97,6 @@ def main():
             w4 = w4c2
             w5 = w5c2
 
-            # print(f"###{w3}###{w4}###{w5}")
-
             lista_w3.append(w3)
             lista_w4.append(w4)
             lista_w5.append(w5)
@@ -117,8 +113,6 @@ def main():
             w6 = w6c3
             w7 = w7c3
             w8 = w8c3
-
-            # print(f"###{w6}###{w7}###{w8}")
 
             lista_w6.append(w6)
             lista_w7.append(w7)

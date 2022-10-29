@@ -13,8 +13,6 @@ class Ultima_neurona():
 
         for i in range(len(lista_cortada)):
             x += (lista_cortada[i]*lista_y[i])
-
-        print(f"x -- {x}")
         
         numerador = 1
         denominador = 1 + (math.e**(-x))
