@@ -1,6 +1,7 @@
 from capa_oculta import Capa_oculta
 from ult_neurona import *
 import matplotlib.pyplot as plt
+import random
 
 def main():
 
@@ -18,19 +19,15 @@ def main():
 
     pesos_cpo = []
 
-    a = 0
-
     for i in range(n*3):
-        a += 1
-        p = float(input(f"Ingrese el peso {i}: "))
+        p = random.uniform(-1,1)
         pesos_cpo.append(p)
 
     pesos_ult_neu = []
 
     for i in range(n+1):
-        p = float(input(f"Ingrese el peso {a}: "))
+        p = random.uniform(-1,1)
         pesos_ult_neu.append(p)
-        a += 1
 
     lista_div = []
     for i in range(0, len(pesos_cpo), 3):
