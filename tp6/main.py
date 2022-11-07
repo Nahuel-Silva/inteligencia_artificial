@@ -7,7 +7,7 @@ from leer_img import *
 def main():
 
     c = 0
-
+    contador = []
     tabla_img = leer_imagenes()
 
     n = int(input("Cuantas neuronas quiere en la capa oculta (1 a n)? "))
@@ -33,7 +33,7 @@ def main():
     
     while c != 100:
         c += 1
-
+        contador.append(c)
         print(f"--------------------------->Iteracion {c}<------------------------------------")
         for i in tabla_img:
             for j in lista_div:
@@ -49,17 +49,17 @@ def main():
 
             lista_comun = []
             
+            i_cortada = i[:-1]
+
             for l in range(len(lista_div)):
                 Soc_gen = lista_y[l]*(1-lista_y[l])*s
                 delta_prim = lr*vias*Soc_gen
-                delta_seg = lr*i[0]*Soc_gen
-                delta_ter = lr*i[1]*Soc_gen
                 w_prim = lista_div[l][0] + delta_prim
-                w_seg = lista_div[l][1] + delta_seg
-                w_ter = lista_div[l][2] + delta_ter
                 lista_comun.append(w_prim)
-                lista_comun.append(w_seg)
-                lista_comun.append(w_ter)
+                for q in range(len(i_cortada)):
+                    delta_gen = lr*i_cortada[q]*Soc_gen
+                    w_gen = lista_div[l][q] + delta_gen
+                    lista_comun.append(w_gen)
 
             lista_y.clear()
             lista_div.clear()
