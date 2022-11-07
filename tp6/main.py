@@ -2,16 +2,16 @@ from capa_oculta import Capa_oculta
 from ult_neurona import *
 import matplotlib.pyplot as plt
 import random
-import cv2
+from leer_img import *
 
 def main():
 
     c = 0
 
-    tabla_img = "imagen"
+    tabla_img = leer_imagenes()
 
     n = int(input("Cuantas neuronas quiere en la capa oculta (1 a n)? "))
-    cant_entradas = len()
+    cant_entradas = len(tabla_img[0])
 
     pesos_cpo = []
 

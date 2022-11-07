@@ -1,7 +1,7 @@
 import cv2
 import copy
 
-def read_images():
+def leer_imagenes():
     imagenes = []
     aux = []
     a = True
