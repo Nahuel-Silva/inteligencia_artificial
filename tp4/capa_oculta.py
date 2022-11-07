@@ -3,15 +3,13 @@ import math
 class Capa_oculta():
 
     def neurona_generica(self, fila, list_pesos):
-
-        w_a = list_pesos[0]
-        w_b = list_pesos[1]
-        w_c = list_pesos[2]
-
+        
+        lista_cortada = list_pesos[1:]
+        fila_cortada = fila[:-1]
         vias = 1
-        e1 = fila[0]
-        e2 = fila[1]
-        x = (w_a*vias)+(w_b*e1)+(w_c*e2)
+        x = list_pesos[0]*vias
+        for i in range(len(lista_cortada)):
+            x += (lista_cortada[i] + fila_cortada[i])
         numerador = 1
         denominador = 1 + (math.e**(-x))
         s_real_y = numerador / denominador
