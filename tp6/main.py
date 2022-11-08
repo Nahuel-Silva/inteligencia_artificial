@@ -11,13 +11,13 @@ def main():
     tabla_img = leer_imagenes()
 
     n = int(input("Cuantas neuronas quiere en la capa oculta (1 a n)? "))
-    cant_entradas = len(tabla_img[0])-1 #7861 entradas
+    cant_entradas = len(tabla_img[0])-1 #7681 entradas
 
     pesos_cpo = []
 
     for i in range(n*cant_entradas):
         p = random.uniform(-0.01, 0.01)
-        pesos_cpo.append(p) #7861 pesos
+        pesos_cpo.append(p) #7681 pesos
 
     pesos_ult_neu = []
 
@@ -27,7 +27,7 @@ def main():
 
     lista_div = []
     for i in range(0, len(pesos_cpo), cant_entradas):
-        lista_div.append(pesos_cpo[i:i+cant_entradas]) #50 listas de 7861 pesos
+        lista_div.append(pesos_cpo[i:i+cant_entradas]) #50 listas de 7681 pesos
 
     lista_y = []
     
@@ -66,14 +66,7 @@ def main():
             for f in range(0, len(lista_comun), cant_entradas):
                 lista_div.append(lista_comun[f:f+cant_entradas])
 
-                
 
-
-
-
-        
-
-    
 
 if __name__ == '__main__':
     main()
