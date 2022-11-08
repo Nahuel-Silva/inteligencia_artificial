@@ -4,15 +4,11 @@ class Ultima_neurona():
 
     def enseñar_ultNeurona(self, lista_y , fila, lista_pesos):
 
-        vias = 1
-        salida_deseada = fila[2]
+        salida_deseada = fila[-1]
+        x = 0
 
-        lista_cortada = lista_pesos[1:]
-
-        x = (lista_pesos[0]*vias)
-
-        for i in range(len(lista_cortada)):
-            x += (lista_cortada[i]*lista_y[i])
+        for i in range(len(lista_pesos)):
+            x += (lista_pesos[i]*lista_y[i])
         
         numerador = 1
         denominador = 1 + (math.e**(-x))
@@ -21,16 +17,11 @@ class Ultima_neurona():
         s = s_real_y*(1-s_real_y)*error
         lr = 0.5
 
-        delta_w9 = lr*vias*s
-        w9 = lista_pesos[0] + delta_w9
-
         nuevas_w = []
-
-        nuevas_w.append(w9)
 
         for i in range(len(lista_y)):
             delta_gen = lr*lista_y[i]*s
-            w_gen = lista_cortada[i] + delta_gen
+            w_gen = lista_pesos[i] + delta_gen
             nuevas_w.append(w_gen)
 
         print("\nNeurona 4:\n")

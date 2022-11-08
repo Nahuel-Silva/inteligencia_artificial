@@ -9,6 +9,7 @@ def leer_imagenes():
     for i in range(10):
         img = cv2.imread(input_images_path + str(i) + ".jpg", cv2.COLOR_RGB2GRAY)
         aux.clear()
+        aux.append(1)
         for j in range(len(img)):
             for k in range(len(img[0])):
                 px = img[j][k][0]
