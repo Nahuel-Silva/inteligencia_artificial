@@ -7,13 +7,17 @@ def leer_imagenes():
     a = True
     input_images_path = "C:/Users/nahue/OneDrive/Desktop/inteligencia_artificial/tp6/fotosIA/"
     for i in range(10):
-        img = cv2.imread(input_images_path + str(i) + ".jpg", cv2.COLOR_RGB2GRAY)
+        img = cv2.imread(input_images_path + str(i) + ".jpg", 0)
+        ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY) 
         aux.clear()
-        aux.append(1)
+        aux.append(int(1))
         for j in range(len(img)):
-            for k in range(len(img[0])):
-                px = img[j][k][0]
-                aux.append(px/255)
+            for k in range(len(img[j])):
+                px = img[j][k]
+                if px == 0:
+                    aux.append(int(0))
+                else:
+                    aux.append(int(1))
 
         if a:
             aux.append(int(0))

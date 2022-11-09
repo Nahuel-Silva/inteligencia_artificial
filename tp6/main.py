@@ -8,6 +8,7 @@ def main():
 
     c = 0
     contador = []
+
     tabla_img = leer_imagenes()
 
     n = int(input("Cuantas neuronas quiere en la capa oculta (1 a n)? "))
@@ -16,13 +17,13 @@ def main():
     pesos_cpo = []
 
     for i in range(n*cant_entradas):
-        p = random.uniform(-0.01, 0.01)
+        p = random.uniform(-1, 1)
         pesos_cpo.append(p) #7681 pesos
 
     pesos_ult_neu = []
 
     for i in range(n+1):
-        p = random.uniform(-0.01, 0.01)
+        p = random.uniform(-1, 1)
         pesos_ult_neu.append(p) #51 pesos
 
     lista_div = []
@@ -30,9 +31,11 @@ def main():
         lista_div.append(pesos_cpo[i:i+cant_entradas]) #50 listas de 7681 pesos
 
     lista_y = []
+    lista_errores = [[] for x in range(len(tabla_img))]
     
     while c != 100:
         c += 1
+        cont_error = 0
         contador.append(c)
         print(f"--------------------------->Iteracion {c}<------------------------------------")
         for i in tabla_img:
@@ -42,6 +45,8 @@ def main():
                 lista_y.append(s_real_y) #51 salidas reales (y)
 
             s, nuevas_w, error = Ultima_neurona().enseñar_ultNeurona(lista_y, i, pesos_ult_neu)
+            lista_errores[cont_error].append(error)
+            cont_error += 1
             pesos_ult_neu.clear()
             pesos_ult_neu = nuevas_w #51 pesos de la ultima neurona
 
@@ -62,9 +67,22 @@ def main():
             lista_y.clear()
             lista_div.clear()
 
-
             for f in range(0, len(lista_comun), cant_entradas):
                 lista_div.append(lista_comun[f:f+cant_entradas])
+
+    with open('pesos.txt', 'w') as f:
+        for peso in lista_comun:
+            f.write(str(peso) + "\n")
+
+    with open('pesos2.txt', 'w') as f:
+        for peso in pesos_ult_neu:
+            f.write(str(peso) + "\n")
+    
+    for i in range(len(lista_errores)):
+        plt.plot(contador, lista_errores[i], label=f"errores{i}")
+    plt.title("errores")
+    plt.legend()
+    plt.show()
 
 
 
